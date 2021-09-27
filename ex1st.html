@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+    <head>
+        <title>Advanced Topics in Smart Media (AGU - WIL)</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/kotlin.css">
+        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <link href="assets/plugins/highlight/styles/default.css" rel="stylesheet">
+        <script href="assets/plugins/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+    </head>
+    <body>
+    <div class="container">
+    <div class="title">
+          <h1>Lesson 1：Differences between Kotlin and Java</h1>
+			<p><em>Adapted from "<a href="https://www.guru99.com/kotlin-vs-java-difference.html#:~:text=Kotlin%20combines%20features%20of%20both,and%20Java%20supports%20implicit%20conversions.">Kotlin vs Java: What’s the Difference?</a>" by James Hartman</em></p>
+		</div>
+<p style="text-align: right;">
+  last update：2021/9/27
+</p>
+        <div class="contents">
+			<p>In this tutorial of difference between Kotlin vs Java, we will discuss the key differences between Java vs Kotlin. But before discussing the Kotlin and Java difference, let’s first learn “What is Java?” and “What is Kotlin?”.</p>
+    </div>
+        <div class="contents">
+		  <h3>What is Java?</h3>
+			<p>Java is a multi-platform, <strong>object-oriented</strong>, and network-centric, programming language. It is <strong>among the most used programming language</strong>. It also used as a computing platform, and it was first released by Sun Microsystem in 1995. It was later acquired by Oracle Corporation.</p>
+		</div>        
+		<div class="contents">
+		  <h3>What is Kotlin?</h3>
+			<p>Kotlin is an open-source programming language that <strong>can run on Java Virtual Machine</strong> (JVM). The language can run on numerous platforms. It is a language that combines <strong>Object Oriented Programming </strong>(OOPs) and <strong>functional programming</strong> in an unrestricted, self – sufficient and distinctive platform. </p>
+			<table>
+			<td align="center">
+			<figure><img src="https://cdn.guru99.com/images/2/022220_0655_KotlinvsJav1.png">
+				<figcaption>Stack Overflow Questions Java vs Kotlin</figcaption>
+			</figure>
+			</td></table>			 
+		</div>
+		<div class="practice practice-checkpoint">
+		<h3>In this tutorial, you will learn</h3>
+		<ol>
+			<li><a href="#1">Key Differences?    </a>	</li>
+			<li><a href="#3">Features of Kotlin    </a>	</li>
+			<li><a href="#4">Features of Java    </a>	</li>
+			<li><a href="#5">History of Kotlin    </a>	</li>
+			<li><a href="#6">History of JAVA    </a>	</li>
+			<li><a href="#7">Difference between Kotlin and Java</a></li>
+			<li><a href="#8">Advantage of Kotlin    </a>	</li>
+			<li><a href="#9">Advantages of Java    </a>	</li>
+			<li><a href="#10">Disadvantage of Kotlin    </a></li>
+			<li><a href="#11">Disadvantages of Java    </a>	</li>
+			<li><a href="#12">Which is Better?    </a>	</li>
+		</ol>
+		</div>
+		<div class="content"><a name="1"></a>
+		<h3>KEY DIFFERENCES: </h3></div>
+	<div class="contents practice practice-checkpoint">
+		<ul>
+		<li>Kotlin combines features of both <strong>object-oriented</strong> and <strong>functional programming</strong>, whereas Java is limited to object-oriented programming.</li>
+		<li>Kotlin doesn&#8217;t offer implicit conversions, and Java supports implicit conversions.</li>
+		<li>Kotlin <strong>doesn&#8217;t support static members</strong>, while Java uses.</li>
+		<li>In, Kotlin <strong>variables of a primitive type are objects</strong>,&nbsp;while in Java Variables of a primitive type aren&#8217;t objects</li>
+		<li>Kotlin supports <strong>Lambda Expression</strong> whereas Java doesn&#8217;t.</li>
+		<li>Kotlin <strong>doesn&#8217;t require any variable datatype specification</strong>, while Java does.</li>		
+		<li>Kotlin programs <strong>don&#8217;t require semicolons</strong> in their program, while Java program does.</li>
+		<li>Language <strong>scripting capabilities</strong> allow you to use Kotlin directly in your Gradle build scripts, while Java does not offer language scripting capabilities.</li>
+		<li>Kotlin allows users to create an <a href="extension_function.html"><strong>extension functions</strong></a>, while Java doesn&#8217;t.</li>
+		<li>Kotlin variables and objects are <a href="null_safety.html"><strong>Null safe</strong></a>. </li>
+		</ul>
+	</div>
+		
+	<div class="content"><a name="3"></a>
+		<h3>Features of Kotlin</h2></div>
+	<div class="contents practice">
+		<p>Here, are important features of Kotlin</p>
+		<ul>
+		<li>Offers Trimmed Coding</li>
+		<li>Kotlin utilizes <a href="/java-virtual-machine-jvm.html" data-lasso-id="198925">JVM</a>, which combines the features of OOPs and functional-oriented programming.</li>
+		<li>Offers <strong>fast compilation</strong></li>
+		<li>Kotlin can support a variety of <strong>extension functions</strong> without making any changes to the code</li>
+		<li>You can write Kotlin code using IDE or using the command-line interface</li>
+		<li>Smart <strong>feature casting</strong> (lambda, elvis, etc.) helps you to cut down the application costs and improves its speed or performance.</li>
+		</ul>
+	</div>
+	<div class="content"><a name="4"></a>
+		<h3>Features of Java</h3></div>
+	<div class="content practice practice-checkpoint">
+		<p>Here are the important features of Java.</p>
+		<ul>
+		<li>Write code once and run it on almost any computing platform</li>
+		<li>It is designed for building object-oriented applications.</li>
+		<li>It is a multithreaded language that allows automatic memory management.</li>
+		<li>Facilitates distributed computing as its network-centric.</li>
+		</ul>
+	</div>
+	<div class="content"><a name="5"></a>
+		<h3>History of Kotlin</h3>
+	</div>
+	<div class="contents practice">
+		<p>Here, are important landmarks from the history of Kotlin:</p>
+		<ul>
+		<li>In 2016, Kotlin v1.0 was launched</li>
+		<li>In 2017, Announcement of Google on the first-class support of Kotlin in Android</li>
+		<li>In 2018, Kotlin v1.3 version released bringing coroutines for asynchronous programming. </li>
+		<li><strong>In 2019, Google announced Kotlin as its preferred programming language for Android application developers</strong></li>
+		</ul>
+	</div>
+	<div class="content"><a name="6"></a>
+		<h3>History of JAVA</h3></div>
+	<div class="practice practice-checkpoint">
+		<p>Here, are important landmarks from the history of Java language</p>
+		<ul>
+		<li>The <a href="/java-platform.html" data-lasso-id="198929">Java language</a> was initially called OAK. Originally, it was developed for handling portable devices and set-top boxes. Oak was a massive failure.</li>
+		<li>In 1995, Sun changed the name to &#8220;Java&#8221; and modified the language to take advantage of the burgeoning www (World Wide Web) development business.</li>
+		<li>Later in 2009, Oracle Corporation acquired Sun Microsystems and took ownership of three key Sun software assets: Java, <a href="/mysql-tutorial.html" data-lasso-id="198930">MySQL</a>, and Solaris.</li>
+		</ul>
+		<p><center></p>
+		<figure>
+			<img width="540" height="376" src="https://cdn.guru99.com/images/2/022220_0655_KotlinvsJav2.png" alt="">
+			<figcaption style="display: table;">Google Trends Kotlin vs Java</figcaption>
+		</figure>
+		<p></center></p>
+	</div>
+	<div class="content"><a name="7"></a>
+		<h3>Difference between Kotlin and Java</h3>
+		
+	</div>
+	<div class="practice practice-checkpoint">
+		<p>Here, are differences between Kotlin vs Java</p>
+		<table class="table table-striped">
+		<tr>
+		<th>Kotlin</th>
+		<th>Java</th>
+		</tr>
+		<tr>
+		<td>Kotlin allows users to create an extension function.
+		</td>
+		<td>Java doesn&#8217;t offer any extension functions.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin doesn&#8217;t require too much work for data classes.
+		</td>
+		<td>Java developers write and construct a lot of elements to develop classes
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin doesn&#8217;t offer implicit conversions.
+		</td>
+		<td>Java supports implicit conversions.
+		</td>
+		</tr>
+		<tr>
+		<td>There are no null variables or objects in Kotlin.
+		</td>
+		<td>Null variable or objects are part of Java language.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin combines features of both object-oriented and functional programming.
+		</td>
+		<td>Java is limited to object-oriented programming.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin doesn&#8217;t support static members.
+		</td>
+		<td>Java uses static members.
+		</td>
+		</tr>
+		<tr>
+		<td>Variables of a primitive type are objects
+		</td>
+		<td>Variables of a primitive type aren&#8217;t objects
+		</td>
+		</tr>
+		<tr>
+		<td>In Kotlin, we can have one or more secondary constructors.
+		</td>
+		<td>In Java, we can&#8217;t have secondary constructors. However, it can have multiple constructors.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin string template also supports expression.
+		</td>
+		<td>Java string doesn&#8217;t support expression like Kotlin.
+		</td>
+		</tr>
+		<tr>
+		<td>It&#8217;s quite easier to deploy Kotlin code.
+		</td>
+		<td>It is hard  to deploy Java code.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin programs don&#8217;t require semicolons in their program.
+		</td>
+		<td>Java program does need a semicolon.
+		</td>
+		</tr>
+		<tr>
+		<td>In Kotlin, coroutine are concurrency design pattern which can be used to simplify code.
+		</td>
+		<td>Java uses two coroutine options as 1) Rx Java and 2) Project loom.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin doesn&#8217;t have any wildcard-types.
+		</td>
+		<td>Wide-card is available in Java.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin&#8217;s type of system has inbuilt null safety.
+		</td>
+		<td>NullPonter Exception is mainly responsible for the development of Java and Android.
+		</td>
+		</tr>
+		<tr>
+		<td>Smart cast feature is available in Kotlin.
+		</td>
+		<td>Smart cast feature in not available in Java.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin  doesn&#8217;t require any variable datatype specifications
+		</td>
+		<td>Java requires variable datatype specifications.
+		</td>
+		</tr>
+		<tr>
+		<td>Kotlin supports Lambda Expression.
+		</td>
+		<td>Java doesn&#8217;t support Lambda expression.
+		</td>
+		</tr>
+		<tr>
+		<td>Lazy-Loading feature is available in Kotlin.
+		</td>
+		<td>This feature is not available in Java.
+		</td>
+		</tr>
+		<tr>
+		<td>Language scripting capabilities allow you to use Kotlin directly in your Gradle build scripts
+		</td>
+		<td>Java does not offer language scripting capabilities.
+		</td>
+		</tr>
+		<tr>
+		<td>It supports modern programming concepts like delegates, extension, higher-order functions.
+		</td>
+		<td>Java supports OOPS programming concept.
+		</td>
+		</tr>
+		<tr>
+		<td>The average salary for a java developer is $104,793 per year.
+		</td>
+		<td>The average salary for &#8220;kotlin&#8221; ranges from approximately $107,275 per year for Software Engineer to $121,034 per year for Android Developer.
+		</td>
+		</tr>
+		</table>
+	</div>
+	<div class="content"><a name="8"></a>
+		<h3>Advantage of Kotlin</h3>
+	</div>
+	<div class="content practice">
+		<p>Here, are benefits/pros of Kotlin:</p>
+		<ul>
+		<li>Using the Kotlin Multiplatform framework, you can <strong>extract one </strong>common codebase that will target all of them at the same time</li>
+		<li>Kotlin offers built-in null safety support, which is a lifesaver, especially on Android, which is full of old Java-style APIs. </li>
+		<li>It&#8217;s more concise and expressive than Java, which means there is less room for error.</li>
+		<li>Offers user-friendly and understandable coding norms</li>
+		<li>Divides large apps into smaller layers. </li>
+		<li>Uses lots of function types and specialized language structures like lambda expressions.</li>
+		<li>Helps developers to create extension functions </li>
+		<li>Offers a very simple and almost automated way of creating data classes</li>
+		<li>Kotlin is a statically-typed language, so it is very easy to read and write.</li>
+		<li>This language allows the exchange and use of information from Java in various ways. </li>
+		<li>It&#8217;ll take less time to write new code in Kotlin.</li>
+		<li>It&#8217;s quite easier to deploy kotlin code and to maintain it at scale.</li>
+		</ul>
+	</div>
+	<div class="content"><a name="9"></a>
+		<h3>Advantages of Java</h3></div>
+	<div class="practice practice-checkpoint">
+		<p>Here, are pros/benefits of Java</p>
+		<ul>
+		<li>Checked exceptions that improve error detecting and solving</li>
+		<li>Detailed documentation is available.</li>
+		<li>A large pool of skilled developers available</li>
+		<li>A huge array of 3rd party libraries</li>
+		<li>It allows you to form standard programs and reusable code.</li>
+		<li>It is a multi-threaded environment that allows you to perform many tasks simultaneously in a program.</li>
+		<li>Excellent performance</li>
+		<li>Easy to navigate libraries</li>
+		</ul>
+	</div>
+	<div class="content"><a name="10"></a>
+		<h3>Disadvantage of Kotlin</h3></div>
+	<div class="content practice ">
+		<p>Here, are cons/drawback of using Kotlin:</p>
+		<ul>
+		<li>Small community of developers, so it lacks  learning materials and professional assistance.</li>
+		<li>Java doesn&#8217;t offer a function of checked exceptions that may lead to errors.</li>
+		<li>Slower compilation speed than Java</li>
+		<li>Kotlin, being a highly declarative language, sometimes it helps you to generate great amounts of boilerplate in corresponding JVM bytecode</li>
+		</ul>
+	</div>
+	<div class="content"><a name="11"></a>
+		<h3>Disadvantages of Java</h3></div>
+	<div class="practice practice-checkpoint">
+		<p>Here, are cons/disadvantages of Java:</p>
+		<ul>
+		<li>Not very suitable for Android API design because of a number of limitations</li>
+		<li>Demands a lot of manual work which increases the number of potential errors</li>
+		<li>JIT compiler makes the program comparatively slow.</li>
+		<li>Java has high memory and processing requirements. </li>
+		<li>It does not provide support for low-level programming constructs like pointers.</li>
+		<li>You don&#8217;t have any control over garbage collection as Java does not offer functions like delete(), free().</li>
+		</ul>
+	</div>
+	<div class="content"><a name="11"></a>
+		<h3>Which is Better?</h3></div>
+	<div class="contents practice practice-checkpoint">
+		<ul>
+		<li>When considering all the pitfalls of Java, especially the problem with NullPointerExceptions, Kotlin seems to be the better one among the two.				</li>
+		<li>Although Java is still an essential language for every <a href="/android-tutorial.html" data-lasso-id="198937">android app development</a> as the Android OS itself is based on the same.				</li>
+<!--		<li>If you are looking to <strong>future proof your android app </strong>development services, then you should choo Kotlin developers for the same. </li>-->
+		</ul>
+    </div>
+    </body>
+</html>

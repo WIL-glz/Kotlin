@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+	<title>Advanced Topics in Smart Media (AGU - WIL)</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/kotlin.css">
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+	<link href="assets/plugins/highlight/styles/default.css" rel="stylesheet">
+	<script href="assets/plugins/highlight/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <div class="container">
+      <div class="title">
+          <h1>Kotlin Null Safety</h1>
+      <p> <em> Adapted from <a href="https://www.geeksforgeeks.org/kotlin-null-safety/">geeksforsgeeks.org</a></em>
+        </p>
+      </div>
+      <p style="text-align: right;">
+        last update：2021/9/27
+      </p>  
+      
+      <div class="contents">
+        <p>
+          Kotlin’s type system is aimed to eliminate the jeopardy of null reference from the code because it is a billion dollar mistake. <strong>NullPointerExceptions</strong> are thrown by the program at runtime and sometimes cause application failure or system crashes. <br>
+          If anybody has been programming in Java or other language that has concept of null reference then he must has experienced about <strong>NullPointerException</strong> in the code. Kotlin compiler also throws NullPointerException if it found any null reference without executing any other statements.<br>
+          The possible causes of NullPointerException’s are following:
+        <ul>
+          <li>Explicit call to throw <strong>NullPointerException()</strong></li>
+            <li>Use of the !! operator</li>
+            <li>Some data inconsistency with regard to initialization e.g. an uninitialized this is passed as an argument.</li>
+            <li>Java interoperations such as attempts to access a member on a null reference, generics type with incorrect nullability.</li>
+        </ul>
+        </p>
+</div>
+  <div class="contents">
+    <h3>Nullable and Non-Nullable Types in Kotlin</h3>
+    <p>A variable of type <strong>String</strong> can not hold null. If we try to assign null to the variable, it gives compiler error.
+    </p>
+  </div>
+<pre>
+<code class="java hljs">var s1: String = "Aogaku"
+s1 = null // compilation error
+</code></pre>
+  <div class="contents">
+    <p>Now, if we want to access the length of the string <strong>s1</strong>, it guarantees not to throw <strong>NPE</strong>, so we can safely say: </p>
+  </div>
+<pre>
+<code class="java hljs">val l = s1.length
+</code></pre>
+
+  <div class="contents">
+    <p>To allow a variable to hold null, we can declare a variable as nullable string, written <strong>String?</strong></p>
+  </div>
+<pre>
+<code class="java hljs">var s2: String? = "Aoyama Gakuin University"
+s2 = null // ok
+print(s2)
+</code></pre>
+  <div class="contents">
+    <p>Now, if we want to access the length of the string <strong>s2</strong>, that would not be safe, and the <strong>compiler reports an error</strong>: </p>
+  </div>
+<pre>
+<code class="java hljs">val l = s2.length         // error: variable 's2' can be null
+</code></pre>
+  
+  <div class="contents">
+    <h3>Kotlin program of nullable type</h3>
+  </div>
+  
+<pre>
+<code class="java hljs">fun main(args: Array<String>) {
+  // variable is declared as nullable
+  var s2: String? = "Aoyama Gakuin University"
+  s2 = null    // no compiler error
+  println(s2.length)  // compiler error because string can be null
+}
+</code></pre>
+<div class="contents">
+  <p><strong>Output</strong></p>
+  <table>
+			<td align="center">
+			<figure><img src="assets/images/null_safety-fig1.png">				
+			</figure>
+			</td></table>			
+  <p>
+  Here, we can easily assign null to a nullable type variable. But we should use the safe operator to get the length of the string.</p>
+  <h3>Checking for null in conditions: the safe call operator (<strong>?.</strong>)</h3>
+  <p>The most common way of checking null reference is using if-else expression. We can explicitly check if variable is null, and handle the two options separately.</p>
+  <h5><strong>Kotlin program of checking null in conditions</strong></h5>
+  <p>In the case of Java we would have to use <strong>if-else block</strong> to check the nullability. <br>
+  If string contains null then it executes the if block, else it executes the else block. 
+  </p>
+  <p><strong>Safe Call operator(?.) </strong>–
+  Null Comparisons are simple but number of nested if-else expression could be burdensome. So, Kotlin has a Safe call operator, <strong>?. </strong>that reduces this complexity and <strong>execute an action only when the specific reference holds a non-null value</strong>. It allows us to combine a null-check and a method call in a single expression.<br>
+  The following expression: 
+  </p>
+  </div>
+  
+<pre>
+<code class="java hljs">firstName?.toUpperCase()
+</code></pre>
+<div class="contents">
+<p>is equivalent to</p>
+</div>
+<pre>
+<code class="java hljs">if(firstName != null)
+  firstName.toUpperCase()
+else
+  null
+</code></pre>
+  <div class="practice practice-checkpoint">
+  <h3>Kotlin program using the "safe operator"</h3>
+  <p>Use the safe call operator to avoid the compiler error of the previous code.</p>
+  </div>
+
+  <div class ="contents">
+  <p>We can use the safe call operator with <strong>let()</strong>, <strong>also() </strong>and <strong>run()</strong> if value is not null.<br>
+  <strong>- let() method – </strong><br>
+  To execute an action only when a reference holds a non-nullable value, we can use a <strong>let</strong> operator. The lambda expression present inside the let is executed only if the variable firstName is not null. </p>
+  </div>
+<pre>
+<code class="java hljs">val firstName: String? = null
+firstName?.let { println(it.toUpperCase()) }
+</code></pre>
+  <div class ="contents">
+    Here, the variable firstName is null, so the lambda expression is not executed to convert the string to Upper Case letters.<br>
+    Kotlin program of using <strong>let</strong>. </div>
+
+<pre>
+<code class="java hljs">fun main(args: Array<String>) {
+  // created a list contains names
+  var stringlist: List<String?> = listOf("Geeks","for", null, Geeks")
+  // created new list
+  var newlist = listOf<String?>()
+  for (item in stringlist) {
+    // executes only for non-nullable values
+    item?.let { newlist = newlist.plus(it) }
+  }
+  // to print the elements stored in newlist
+  for(items in newlist){
+    println(items)
+  }
+}
+</code></pre>
+  <div class="contents">
+    <p><strong>Output</strong></p>
+    <!--
+    <table>
+        <td align="center">
+        <figure><img src="assets/images/null_safety-fig1.png">				
+        </figure>
+        </td>
+    </table>			
+    -->
+    </div>
+<pre><code class="java hljs">Geeks
+for
+Geeks
+</code>
+</pre>    
+    <p><strong>also() method chain with let() – </p></strong>
+    <p>If we want to apply some additional operation like printing the non-nullable items of the list we can use an also() method and chain it with a let() or run(): 
+    </p>        
+  </div>  
+  
+<pre>
+<code class="java hljs">fun main(args: Array<String>) {
+  // created a list contains names
+  var stringlist: List<String?> = listOf("Geeks","for", null, Geeks")
+  // created new list
+  var newlist = listOf<String?>()
+  for (item in stringlist) {
+    // executes only for non-nullable values
+    item?.let { newlist = newlist.plus(it) }
+    item?.also{it -> println(it)}
+  }
+}
+</code></pre>
+  <div class="contents">
+  <p><strong>- run() method -</strong></p>
+  <p>Kotlin has a run() method to execute some operation on a nullable reference. It seems to be very similar to let() but inside of a function body, the run() method operates only when we use this reference instead of a function parameter:</p>
+  </div>
+<pre>
+<code class="java hljs">fun main(args: Array<String>) {
+    // created a list contains names
+    var stringlist: List<String?> = listOf("Geeks","for", null, "Geeks")
+    // created new list
+    var newlist = listOf<String?>()
+    for (item in stringlist) {
+        // executes only for non-nullable values
+        item?.run { newlist = newlist.plus(this) } // this reference
+        item?.also{it -> println(it)}
+    }
+}</code></pre>
+  <div class="contents">
+  <p><strong>- Elvis Operator(?:) –</strong></p>
+  <p>The Elvis operator is used to return a non-null value or a default value when the original variable is null. In other words, if left expression is not null then elvis operator returns it, otherwise it returns the right expression. The right-hand side expression is evaluated only if the left-hand side found to be null.<br>
+  The following expression: </p>
+  </div>
+<pre>
+<code class="java hljs">val name = firstName ?: "Unknown"</code></pre>  
+  <div class="contents">
+  is equivalent to: 
+  </div>
+<pre>
+<code class="java hljs">val name = if(firstName!= null) 
+  firstName
+else 
+  "Unknown"
+</code></pre>  
+Moreover, we can also use throw and return expressions on the right side of Elvis operator and it is very useful in functions. Hence, we can throw an exception instead of returning a default value in the right side of Elvis operator. 
+
+<pre>
+<code class="java hljs">val name = firstName ?: throw IllegalArgumentException("Enter valid name")
+</code></pre>  
+  <div class="contents">  
+  <p><strong>- Kotlin program of using Elvis operator –</strong></p>
+  </div>
+
+<pre>
+<code class="java hljs">fun main(args: Array<String>) {
+  var str : String?  = "GeeksforGeeks"
+  println(str?.length)
+  str = null
+  println(str?.length ?: "-1")     
+}
+</code></pre>  
+  <div class="contents">  
+    <p><strong>output</strong></p>
+  </div>
+
+<pre>
+<code class="java hljs">13
+-1
+</code></pre>  
+  <div class="contents">
+  <p><strong>Not null assertion : !! Operator</strong></p>
+  <p>The not null assertion (!!) operator converts any value to a non-null type and throws an exception if the value is null. <br>
+  If anyone want NullPointerException then he can ask explicitly using this operator.</p>
+  </div>
+  
+<pre>
+<code class="java hljs">fun main(args: Array<String>) {
+  var str : String?  = "GeeksforGeeks"
+  println(str!!.length)
+  str = null
+  str!!.length
+}
+</code></pre>  
+  <div class="contents">  
+    <p><strong>output</strong></p>
+  </div>
+
+<pre>
+<code class="java hljs">13
+Exception in thread "main" kotlin.KotlinNullPointerException
+    at FirstappKt.main(firstapp.kt:8)
+</code></pre>
+
+  <div class="contents">  
+    <p></p>
+  </div>
+
+</body>
+</html>

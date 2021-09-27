@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+<head>
+	<title>Advanced Topics in Smart Media (AGU - WIL)</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/kotlin.css">
+	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+	<link href="assets/plugins/highlight/styles/default.css" rel="stylesheet">
+	<script href="assets/plugins/highlight/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <div class="container">
+      <div class="title">
+          <h1>Extension function in Kotlin</h1>
+      <p> <em> Adapted from Kayvan Kaseb <a href="https://medium.com/kayvan-kaseb/extension-function-in-kotlin-ef52e4319e81#:~:text=What%20is%20the%20definition%20of,an%20extension%20method%20for%20it.">Extension Function in Kotlin </a></em>
+        </p>
+      </div>
+      <p style="text-align: right;">
+        last update：2021/9/27
+      </p>  
+      
+      <div class="contents">
+          <p>Kotlin language supports the ability to extend a class with new functionality <strong>without implementing the inheritance</strong> concept by a class or using design pattern such as Decorator. This is accomplished via <strong>special indications, which is called Extension function</strong>. Thus, this capability could be effective for becoming <strong>code  cleaner and easier to read</strong>, and it reduces the code as well. This essay aims to consider Extension function in Kotlin as an ability for following some best practices in Android development.</p>
+          <h3>What is the definition of Extension function?</h3>
+          <p>fundamentally, an extension function is a member function of a class, which is <strong>defined outside the class</strong>. <br>
+            <em> For instance, if you need to use a method to the String class that returns a new string with first and last character removed, you can write an extension method for it. In fact, this method is not already available in String class.</em></p>
+          <h3 >Advantages of using Extension function</h3>
+        <p >In general, Extension functions have the potential to:</p>
+          <ol>
+            <li>Code <strong>more brief</strong>, <strong>readable</strong>, and <strong>logical</strong> by improving and removing redundant code. (<em>it means ess code means fewer opportunities for making errors!</em>)</li>
+            <li >Can add functionality to a <strong>final class</strong> (<em>it means any class does not need to be defined as a non-final class</em>).</li>
+            <li >Can add functionality <strong>without sub-classing</strong>.</li>
+            <li >It follows some <strong>best practices</strong> in Object-Oriented programming particularly <strong>Open–closed principle</strong>, which  indicates entities (classes, modules, functions, etc.) should be <strong>open for extension, but closed for modification</strong>.</li>
+        </ol>
+          <h3>Kotlin Extension function</h3>
+          <p>Basically, Kotlin Extension function provides a facility to add methods to class without inheriting a class or using any type of design pattern. The created extension functions are used as a regular function inside that class. The extension function is declared with using a prefix receiver type (class name) and also with using method name (extension function) as follows:</p>
+<pre>
+<code class="java hljs"><strong>fun</strong> &lt;class_name&gt;.&lt;method_name&gt;()
+</code></pre>
+          <p >Generally, we call all methods from outside the class which are already defined inside the class. For instance, suppose that we want to call a method perimeter() of Circle class which is not defined in class. This indication Circle.perimeter() function is known as extension function, and Circle class is known as receiver type as well.</p>
+<pre>
+<code class="java hljs">class Circle(val radius: Double){
+  <strong>fun</strong> area(): Double{
+    return Math.PI * radius * radius;
+  }
+} 
+</code></pre>
+Usage of above defined extension function.
+<pre>
+<code class="java hljs">
+<strong>fun</strong> Circle.perimeter(): Double{ 
+  return 2 * Math.PI * radius; 
+}
+</code></pre>
+<pre>
+<code class="java hljs"><strong>fun</strong> main(args: Array&lt;String&gt;){
+  val circle = Circle(5.5); 
+  val perimeterValue = circle.perimeter()
+  println("Perimeter: $perimeterValue")
+  val areaValue = circle.area()
+  println("Area: $areaValue")
+}
+</code></pre>
+        
+          <h3 >Extended Library Classes</h3>
+          <p >In Kotlin, you can extend the library classes as well as user-defined classes. In fact, the extension function could be added to library classes, and used in a same way as for user-defined classes similarly. <br>
+          For example:</p>
+<pre>
+<code class="java hljs"><strong>fun</strong> main(args: Array&lt;String&gt;){
+  <strong>fun</strong> Int.abs(): Int{
+    return if(this &lt; 0) 
+  }
+  println((-4).abs())
+  println(4.abs()) 
+}
+</code></pre>        
+          <h3 >Nullable Receiver</h3>
+          <p >Extension functions can be defined with the class type, which is nullable. In this situation, the check for null is added inside the extension function, and the appropriate value is returned. For instance, we are swapping the elements of Mutable List by using swap() method, but MutableList class does not support the swap() internally. Therefore, for addressing this issue, we should write an extension function for MutableList via swap() function.</p>
+<pre>
+<code class="java hljs"><strong>fun</strong> MutableList&lt;Int&gt;?.swap(first: Int, second: Int): Any{
+  if (this == null) return "null" <strong><em>//Checked the null-ability here!</em></strong>
+  else{
+    val temp = this[first]
+    this[first] = this[second]
+    this[second] = temp
+    return this
+  }
+}  
+
+<strong>fun</strong> main(args: Array&lt;String&gt;){  
+  val list = mutableListOf(6,9,7)
+  println("Print the list :$list")
+  val result = list.swap(0, 2)
+  println("swapping the list :$result")  <strong><em>//Output: [7, 10, 6]</em></strong>
+}
+</code></pre>
+        
+          <h3>Companion Object Extensions</h3>
+          <p >As a matter of fact, a companion object is an object that is mentioned inside a class and specified with the companion keyword. Companion object is used to call the member function of class directly by using the class name in similar way to static keyword in Java. If a class includes companion object, we can define extension functions and properties for the companion object.</p>
+          
+<pre>
+<code class="java hljs">class SampleClass{
+  companion object{
+    <strong>fun</strong> display():String{
+      return "Companion Object Extensions"
+    }
+  }
+}
+<strong>fun</strong> main(args: Array&lt;String&gt;){
+  val instance = SampleClass.display()
+}
+</code></pre>
+          <p >Furthermore, the companion object extension is being called by using the class name (qualifier). For example:</p>
+<pre>
+<code class="java hljs">class SampleClass{
+  companion object{
+    <strong>fun</strong> create(sample :String): String{
+      return sample
+    }
+  }
+} 
+
+<strong>fun</strong> SampleClass.Companion.printString(){
+  println("Companion Object Extensions")
+}
+
+<strong>fun</strong> main(args: Array&lt;String&gt;){  
+  val sampleObject = SampleClass.printString("Print the string") println(sampleObject)
+}
+</code></pre>
+          <p><strong>In conclusion, </strong>Kotlin supports the ability to extend a class with new functionality without implementing the inheritance or using a design pattern design pattern. This is accomplished via special indications that is called Extension function. This ability could be helpful for becoming code more cleaner and easy to read, and it reduces the code as well. However, this method has some negative consequences. For instance, you cannot access the protected properties or functions of your base class.</p>
+      </div>
+	</div>
+</body>
+</html>
